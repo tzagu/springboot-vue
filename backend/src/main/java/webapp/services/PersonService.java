@@ -2,7 +2,6 @@ package webapp.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import webapp.models.Person;
 import webapp.repositories.PersonRepository;
@@ -13,6 +12,14 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class PersonService {
+
+//
+//    the above lombok @RequiredArgsConstructor will automatically generate the following variable and the constructor method
+//    private final PersonRepository personRepository;
+//
+//    public ProductService(PersonRepository personRepository) {
+//        this.personRepository = personRepository;
+//    }
 
     @Autowired
     PersonRepository personRepository;
