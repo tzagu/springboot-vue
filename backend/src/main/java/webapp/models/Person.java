@@ -1,6 +1,7 @@
 package webapp.models;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 @Table
@@ -20,7 +21,10 @@ public class Person {
     private String mobile2;
 
     @Column
-    private String landline;
+    private String landLine;
+
+    @Column
+    private Date joinedDate;
 
     @Column
     private String email;
@@ -37,13 +41,14 @@ public class Person {
     public Person() {
     }
 
-    public Person(int id, String name, String mobile1, String mobile2, String email, String landline, String address, int dealCount, String status) {
+    public Person(int id, String name, String mobile1, String mobile2, String email, String landLine, Date joinedDate, String address, int dealCount, String status) {
         this.id = id;
         this.name = name;
         this.mobile1 = mobile1;
         this.mobile2 = mobile2;
         this.email = email;
-        this.landline = landline;
+        this.landLine = landLine;
+        this.joinedDate = joinedDate;
         this.address = address;
         this.dealCount = dealCount;
         this.status = status;
@@ -82,11 +87,11 @@ public class Person {
     }
 
     public String getLandline(){
-        return landline;
+        return landLine;
     }
 
     public void setLandline(String landline){
-        this.landline = landline;
+        this.landLine = landline;
     }
 
     public String getEmail() {

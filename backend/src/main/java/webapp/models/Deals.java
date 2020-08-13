@@ -16,8 +16,9 @@ public class Deals {
     @Column
     private int personItemId;
 
-    //not adding person 1 id as a column because the personItemId (above) can reach to the person 1
-    //hence the person 1 is assumed to be the seller while person 2 should be the buyer of the deal
+    @Column
+    private int person1;
+
     @Column
     private int person2;
 
@@ -25,9 +26,10 @@ public class Deals {
     @CreationTimestamp
     private Date date;
 
-    public Deals(int id, int personItemId, int person2, Date date) {
+    public Deals(int id,int person1, int personItemId, int person2, Date date) {
         this.id = id;
         this.personItemId = personItemId;
+        this.person1 = person1;
         this.person2 = person2;
         this.date = date;
     }

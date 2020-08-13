@@ -9,6 +9,7 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @OneToMany(cascade = )
     private int id;
 
     @Column
@@ -18,7 +19,7 @@ public class Category {
     }
 
     public Category(int id, String name) {
-        id = id;
+        this.id = id;
         this.name = name;
     }
 
