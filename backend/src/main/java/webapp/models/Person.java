@@ -2,6 +2,8 @@ package webapp.models;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table
@@ -38,11 +40,22 @@ public class Person {
     @Column
     private String status;
 
+    @OneToMany(cascade = CascadeType.ALL, targetEntity = ItemPerson.class)
+    @JoinColumn(name = "personId", referencedColumnName = "id")
+    private List<ItemPerson> itemPersonList = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, targetEntity = Deals.class)
+    @JoinColumn(name = "sellerdeal", referencedColumnName = "id")
+    private List<Deals> person1 = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, targetEntity = Deals.class)
+    @JoinColumn(name = "buyerdeal", referencedColumnName = "id")
+    private List<Deals> person2 = new ArrayList<>();
+
     public Person() {
     }
 
-    public Person(int id, String name, String mobile1, String mobile2, String email, String landLine, Date joinedDate, String address, int dealCount, String status) {
-        this.id = id;
+    public Person(String name, String mobile1, String mobile2, String email, String landLine, Date joinedDate, String address, int dealCount, String status) {
         this.name = name;
         this.mobile1 = mobile1;
         this.mobile2 = mobile2;
