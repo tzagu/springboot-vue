@@ -19,17 +19,17 @@ public class PersonAPI {
     @Autowired
     PersonService personService;
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<Person>> findAll(){
         return ResponseEntity.ok(personService.findAll());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("all/{id}")
     public ResponseEntity<Optional<Person>> findById(int id){
         return ResponseEntity.ok(personService.findById(id));
     }
 
-    @PostMapping("/{id}")
+    @PostMapping("/all")
     public ResponseEntity<?> save(@Valid @RequestBody Person person){
         return ResponseEntity.ok(personService.save(person));
     }
