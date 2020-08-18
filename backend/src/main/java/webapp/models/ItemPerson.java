@@ -1,6 +1,8 @@
 package webapp.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table
@@ -9,12 +11,6 @@ public class ItemPerson {
     @Id
     @GeneratedValue
     private int id;
-
-    @Column
-    private int personId;
-
-    @Column
-    private int itemId;
 
     @Column
     private String brand;
@@ -28,13 +24,14 @@ public class ItemPerson {
     @Column
     private int price;
 
+    @OneToMany(cascade = CascadeType.ALL, targetEntity = Deals.class)
+    @JoinColumn(name = "itemPersonId", referencedColumnName = "id")
+    private List<Deals> deals = new ArrayList<>();
+
     public ItemPerson() {
     }
 
-    public ItemPerson(int id, int personId, int itemId, String brand, String deliverTo, int quantity, int price) {
-        this.id = id;
-        this.personId = personId;
-        this.itemId = itemId;
+    public ItemPerson(String brand, String deliverTo, int quantity, int price) {
         this.brand = brand;
         this.deliverTo = deliverTo;
         this.quantity = quantity;
@@ -47,22 +44,6 @@ public class ItemPerson {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getPersonId() {
-        return personId;
-    }
-
-    public void setPersonId(int personId) {
-        this.personId = personId;
-    }
-
-    public int getItemId() {
-        return itemId;
-    }
-
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
     }
 
     public String getBrand() {
@@ -95,5 +76,13 @@ public class ItemPerson {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public List<Deals> getDeals() {
+        return deals;
+    }
+
+    public void setDeals(List<Deals> deals) {
+        this.deals = deals;
     }
 }

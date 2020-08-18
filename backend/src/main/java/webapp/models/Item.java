@@ -1,6 +1,8 @@
 package webapp.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table
@@ -13,11 +15,14 @@ public class Item {
     @Column
     private String name;
 
+    @OneToMany(cascade = CascadeType.ALL, targetEntity = ItemPerson.class)
+    @JoinColumn(name = "itemId", referencedColumnName = "id")
+    private List<ItemPerson> itemPersonList = new ArrayList<>();
+
     public Item() {
     }
 
-    public Item(int id, String name) {
-        this.id = id;
+    public Item(String name) {
         this.name = name;
     }
 
@@ -37,5 +42,11 @@ public class Item {
         this.name = name;
     }
 
+    public List<ItemPerson> getItemPersonList() {
+        return itemPersonList;
+    }
 
+    public void setItemPersonList(List<ItemPerson> itemPersonList) {
+        this.itemPersonList = itemPersonList;
+    }
 }
