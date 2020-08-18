@@ -1,5 +1,7 @@
 package webapp.models;
 
+import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -7,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table
-public class Person {
+public class Person{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +28,8 @@ public class Person {
     private String landLine;
 
     @Column
+    @Temporal(TemporalType.DATE)
+    @CreatedDate
     private Date joinedDate;
 
     @Column

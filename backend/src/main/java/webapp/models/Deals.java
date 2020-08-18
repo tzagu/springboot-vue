@@ -12,7 +12,9 @@ public class Deals {
     @Id
     @GeneratedValue
     private int id;
+
     @Column
+    @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
     private Date date;
 
