@@ -6,6 +6,7 @@
           <v-text-field
             label="Email Address"
             single-line
+            shaped
           ></v-text-field>
         </v-col>
         </v-row>
